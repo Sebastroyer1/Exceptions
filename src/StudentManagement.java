@@ -10,14 +10,13 @@ class Student implements Cloneable {
     // Constructor
     public Student(String name, int age, String major) throws StudentUnderAgeException, StudentNameException {
         this.name = name;
-        String regex = "^[a-zA-Z' -]+$";
         // Check if the provided age is less than 18
         if (age < 18) {
             // If the age is less than 18, throw a StudentUnderAgeException
             // with a custom error message
             throw new StudentUnderAgeException("Student age has to be 18 or more");
         }
-        if (name != null && !name.matches(regex)) {
+        if (name != null && !name.matches("^[a-zA-Z' -]+$")) {
             throw new StudentNameException("Invalid Student Name");
         }
         // If the age is valid (18 or older), set the age field to the provided value
